@@ -1,0 +1,29 @@
+message ip_req_c
+{
+	required int32 msg_seq = 1;	// range: 0 -- N, the lower sequence indicates the later msg.
+	required string ip = 2;
+}
+
+
+message ip_rsp_c
+{
+	required int32 ret = 1;
+	optional string desc = 2;
+	required int32 pid = 3;	
+	optional string province = 4; 
+}
+
+message ip_proto_c {
+	enum op {
+		IP_REQ = 0;
+		IP_RSP = 1;
+	}
+
+	required int32 req_op = 1;
+	required int32 sid = 2; 
+
+	optional ip_req_c ip_req = 3;
+	optional ip_rsp_c ip_rsp = 4;
+
+}
+

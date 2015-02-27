@@ -1,0 +1,17 @@
+message CounterRequest
+{
+  required int32 bid = 1;
+  required string keyName = 2;
+  enum RequestType
+  {
+	requestTypeIncr = 1;
+	requestTypeDecr = 2;
+	requestTypeGet  = 3;
+	requestTypeExpire = 4;
+  }
+
+  required RequestType requestType = 3;
+  optional string appName = 4;
+  optional int32 expiredSeconds = 5;
+}
+

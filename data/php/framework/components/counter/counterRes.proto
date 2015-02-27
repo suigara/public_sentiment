@@ -1,0 +1,7 @@
+message CounterRes
+{
+  optional string rescode = 1;
+  optional string  keyVaule = 2;
+
+}
+

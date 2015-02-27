@@ -1,0 +1,15 @@
+message CWaeOidb_proto {
+	required bytes result = 1;
+	required int32 cmd = 2;
+	required bytes uin = 3;
+	required int32 servicetype = 4;
+	required int32 skey_len = 5;
+	optional bytes skey = 6;
+	required int32 waetype_len = 7;
+	optional bytes waetype = 8;
+    required int32 waeappid_len = 9;
+	optional bytes waeappid = 10;
+	required int32 data_len = 11;
+	optional bytes pdata = 12;
+}
+

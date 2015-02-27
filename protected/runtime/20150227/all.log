@@ -1,0 +1,278 @@
+2015/02/27 06:15:49 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 06:15:49 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 06:15:49 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 06:15:50 [trace] [system.CModule] Loading "urlManager" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 06:15:50 [trace] [system.CModule] Loading "coreMessages" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 06:15:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message '无法解析请求 "site"。' in F:\xampp\htdocs\public_sentiment\data\php\framework\core\web\CWebApplication.php:299
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\data\php\framework\core\web\CWebApplication.php(144): CWebApplication->runController('')
+#1 F:\xampp\htdocs\public_sentiment\data\php\framework\core\CApplication.php(161): CWebApplication->processRequest()
+#2 F:\xampp\htdocs\public_sentiment\index.php(11): CApplication->run()
+#3 {main}
+REQUEST_URI=/public_sentiment/
+2015/02/27 06:15:50 [trace] [system.CModule] Loading "errorHandler" application component
+2015/02/27 13:18:01 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:18:01 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:18:01 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:18:02 [trace] [system.CModule] Loading "db" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (23)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:02 [trace] [system.db.CDbCommand] Executing SQL: insert into snatch_data values ("1")
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (25)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:02 [trace] [system.db.CDbConnection] Opening DB:master connection
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (25)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:03 [trace] [system.db.CDbConnection] Closing DB connection
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (25)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:03 [trace] [system.CModule] Loading "coreMessages" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (25)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:03 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'test.snatch_data' doesn't exist. The SQL statement executed was: insert into snatch_data values ("1"). The SQL statement executed was: insert into snatch_data values ("1").
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (25)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:03 [error] [system.db.CDbCommand] sql execute fail(sql:insert into snatch_data values ("1"))
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (25)
+in F:\xampp\htdocs\public_sentiment\index.php (17)
+2015/02/27 13:18:03 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'test.snatch_data' doesn't exist. The SQL statement executed was: insert into snatch_data values ("1")' in F:\xampp\htdocs\public_sentiment\data\php\framework\components\db\CDbCommand.php:490
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(25): CDbCommand->execute()
+#1 F:\xampp\htdocs\public_sentiment\index.php(17): PublicSentimentSnatch->snatchToDb()
+#2 {main}
+REQUEST_URI=/public_sentiment/
+2015/02/27 13:18:03 [trace] [system.CModule] Loading "errorHandler" application component
+2015/02/27 13:47:02 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:02 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:02 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:02 [error] [php] Invalid argument supplied for foreach() (F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php:59)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(59): CWebApplication->handleError()
+#1 F:\xampp\htdocs\public_sentiment\index.php(16): PublicSentimentSnatch->getPublicSentimentJson()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (59)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:47:02 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (59)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:47:23 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:23 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:23 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:24 [error] [php] Invalid argument supplied for foreach() (F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php:58)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(58): CWebApplication->handleError()
+#1 F:\xampp\htdocs\public_sentiment\index.php(16): PublicSentimentSnatch->getPublicSentimentJson()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:47:24 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:47:33 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:33 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:33 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:47:33 [error] [php] Invalid argument supplied for foreach() (F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php:58)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(58): CWebApplication->handleError()
+#1 F:\xampp\htdocs\public_sentiment\index.php(16): PublicSentimentSnatch->getPublicSentimentJson()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:47:33 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:48:02 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:48:02 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:48:02 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:48:02 [error] [php] Invalid argument supplied for foreach() (F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php:50)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(50): CWebApplication->handleError()
+#1 F:\xampp\htdocs\public_sentiment\index.php(16): PublicSentimentSnatch->getPublicSentimentJson()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (50)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:48:02 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (50)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:48:36 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:48:36 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:48:36 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:48:37 [error] [php] Invalid argument supplied for foreach() (F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php:58)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(58): CWebApplication->handleError()
+#1 F:\xampp\htdocs\public_sentiment\index.php(16): PublicSentimentSnatch->getPublicSentimentJson()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:48:37 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:49:38 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:49:38 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:49:38 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 13:49:38 [error] [php] Invalid argument supplied for foreach() (F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php:58)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(58): CWebApplication->handleError()
+#1 F:\xampp\htdocs\public_sentiment\index.php(16): PublicSentimentSnatch->getPublicSentimentJson()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 13:49:38 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (58)
+in F:\xampp\htdocs\public_sentiment\index.php (16)
+2015/02/27 14:00:17 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:00:17 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:00:17 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:00:18 [trace] [system.CModule] Loading "db" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (24)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:00:18 [error] [php] array_merge(): Argument #2 is not an array (F:\xampp\htdocs\public_sentiment\data\php\framework\components\db\CDbCommand.php:422)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(40): PublicSentimentSnatch->snatchToDb()
+#1 F:\xampp\htdocs\public_sentiment\index.php(18): PublicSentimentSnatch->getMoreNews()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:00:18 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:13 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:03:13 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:03:13 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:03:13 [trace] [system.CModule] Loading "db" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (24)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:13 [trace] [system.db.CDbCommand] Executing SQL: insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:13 [trace] [system.db.CDbConnection] Opening DB:master connection
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:14 [trace] [system.db.CDbConnection] Closing DB connection
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:14 [trace] [system.CModule] Loading "coreMessages" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:14 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '1425016993' for column 'ts' at row 1. The SQL statement executed was: insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?). The SQL statement executed was: insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?).
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:14 [error] [system.db.CDbCommand] sql execute fail(sql:insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?))
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (40)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:03:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand 无法执行 SQL 语句: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect datetime value: '1425016993' for column 'ts' at row 1. The SQL statement executed was: insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?)' in F:\xampp\htdocs\public_sentiment\data\php\framework\components\db\CDbCommand.php:490
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(26): CDbCommand->execute(Array)
+#1 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(40): PublicSentimentSnatch->snatchToDb('\xE9\x99\x88\xE8\xB5\xAB', '<b>\xE6\x9D\x8E\xE6\x99\xA8\xE5\x90\x90\xE6\xA7\xBD...', 'http://lady.163...')
+#2 F:\xampp\htdocs\public_sentiment\index.php(18): PublicSentimentSnatch->getMoreNews('\xE9\x99\x88\xE8\xB5\xAB')
+#3 {main}
+REQUEST_URI=/public_sentiment/
+2015/02/27 14:03:14 [trace] [system.CModule] Loading "errorHandler" application component
+2015/02/27 14:12:02 [trace] [system.CModule] Loading "log" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:12:02 [trace] [system.CModule] Loading "bootstrap" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:12:02 [trace] [system.CModule] Loading "request" application component
+in F:\xampp\htdocs\public_sentiment\index.php (11)
+2015/02/27 14:12:03 [trace] [system.CModule] Loading "db" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (24)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:03 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:03 [trace] [system.db.CDbConnection] Opening DB:master connection
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [trace] [system.db.CDbCommand] Executing SQL: select count(id) from snatch_data where keyword=? and url=?
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (26)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (46)
+in F:\xampp\htdocs\public_sentiment\index.php (18)
+2015/02/27 14:12:04 [error] [php] file_get_contents() expects parameter 1 to be a valid path, string given (F:\xampp\htdocs\public_sentiment\protected\include\simple_html_dom.php:78)
+Stack trace:
+#0 F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php(50): PublicSentimentSnatch->snatchMoreNews()
+#1 F:\xampp\htdocs\public_sentiment\index.php(18): PublicSentimentSnatch->snatchMoreNews()
+REQUEST_URI=/public_sentiment/
+in F:\xampp\htdocs\public_sentiment\protected\include\simple_html_dom.php (78)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (41)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (50)
+2015/02/27 14:12:04 [trace] [system.CModule] Loading "errorHandler" application component
+in F:\xampp\htdocs\public_sentiment\protected\include\simple_html_dom.php (78)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (41)
+in F:\xampp\htdocs\public_sentiment\protected\include\PublicSentimentSnatch.php (50)
