@@ -73,7 +73,7 @@ class PublicSentiment
         $start = $periods[0];
         $end = $periods[1];
         $dateIdx = $this->prDates($start, $end);
-        echo $startDate . ' to ' . $endDate . '<br>';
+        // echo $startDate . ' to ' . $endDate . '<br>';
         $pointNewJsonArray = $this->getPointNews($keyword, $startDate, $endDate, $userIndexes);
         //echo json_encode($pointNewJsonArray) . '<br>';
         $pointNewsArray = array();

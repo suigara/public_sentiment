@@ -15,7 +15,10 @@ include ("/protected/include/public_sentiment.php");
 $ps = new PublicSentiment();
 $pointNewsArray = $ps->getPublicSentimentJsonLastMonth("陈赫");
 foreach ($pointNewsArray as $currentnews) {
-    echo json_encode($currentnews) . '<br>';
+    showNews($currentnews);
+}
+function showNews($news){
+    echo '标题;'.$news["title"].', 时间:'.$news["date"].', 网址:'.$news["url"].', 热点数:'.$news["pointCount"] . '<br>';
 }
 //$su->snatchMoreNews("陈赫");
 
