@@ -18,8 +18,9 @@ include("PointNews.php");
 class PublicSentiment
 {
 
-    public function  snatchAllNews($keyword){
-        $this->snatchMoreNews($keyword,1);
+    public function  snatchAllNews($keyword)
+    {
+        $this->snatchMoreNews($keyword, 1);
     }
 
     private function  snatchMoreNews($keyword, $startPageNo = 1)
@@ -44,7 +45,7 @@ class PublicSentiment
     private function snatchToDb($keyword, $title, $url)
     {
         $db = Mod::app()->db;
-        $querySql = 'select id from snatch_data where keyword=? and url=?';
+        $querySql = 'select id from snatch_data where keyword = ? and url = ?';
         $count = $db->createCommand($querySql)->query(array($keyword, $url))->count();
         if ($count > 0) {
             return;
@@ -78,16 +79,11 @@ class PublicSentiment
         $pointNewsArray = array();
         foreach ($pointNewJsonArray["relatednews"] as $currentnews) {
             if ($currentnews) {
-
                 $dateTime = $currentnews['date'];
-                $date_ymd = substr($dateTime,0,10);
+                $date_ymd = substr($dateTime, 0, 10);
                 $pointCount = $userIndexes[$dateIdx[$date_ymd]];
-                //echo substr($dateTime,0,10). '='.$pointCount.'<br>';
                 $currentnews['pointCount'] = $pointCount;
-                //echo json_encode($currentnews) . '<br>';
-                array_unshift($pointNewsArray,$currentnews);
-//                $pointNewsArray[$date_ymd] = $currentnews;
-                //echo $currentnews['title'] . '-' . $currentnews['date'] . '<br>';
+                array_unshift($pointNewsArray, $currentnews);
             }
         }
         foreach ($pointNewsArray as $currentnews) {
@@ -111,8 +107,8 @@ class PublicSentiment
         return $result;
     }
 
-    private  function getPointNews($keyword, $startDate,
-                          $endDate, $userIndexes)
+    private function getPointNews($keyword, $startDate,
+                                  $endDate, $userIndexes)
     {
         // echo strtotime($startDate);
         $pointtime = $this->getTopTen($userIndexes, strtotime($startDate),
@@ -234,5 +230,4 @@ class PublicSentiment
     }
 
 
-
-} 
+}
