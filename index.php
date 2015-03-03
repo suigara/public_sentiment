@@ -11,8 +11,8 @@ require($env->getModPath().'/Mod.php');
 Mod::createWebApplication($env->getConfig());//->run();
 
 //echo "nihao";
-include ("/protected/include/PublicSentimentSnatch.php");
-$su = new PublicSentimentSnatch();
+include ("/protected/include/public_sentiment.php");
+$su = new PublicSentiment();
 $str = $su->getPublicSentimentJsonLastMonth("陈赫");
 //$su->snatchMoreNews("陈赫");
 

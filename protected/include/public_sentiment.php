@@ -11,49 +11,58 @@ ini_set('date.timezone', 'Asia/Shanghai');
 define("YQ_URL", "http://zhishu.sogou.com/");
 
 include("simple_html_dom.php");
+include("tools.php");
+include("PointNews.php");
 
-class PublicSentimentSnatch
+
+class PublicSentiment
 {
 
-    function snatchToDb($keyword,$title,$url)
-    {
-        $db = Mod::app()->db;
-        $querySql = 'select id from snatch_data where keyword=? and url=?';
-        $count = $db->createCommand($querySql)->query(array($keyword,$url))->count();
-        if($count > 0){
-            return;
-        }
-        $sql = 'insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?)';
-        $db->createCommand($sql)->execute(array($keyword,$title,$url,date('Y-m-d H:i:s',time())));
+    public function  snatchAllNews($keyword){
+        $this->snatchMoreNews($keyword,1);
     }
 
-    function  snatchMoreNews($keyword,$pageNo=1)
+    private function  snatchMoreNews($keyword, $startPageNo = 1)
     {
         $utf8KeyWord = $keyword;
-        $keyword = $this->UTF8_to_gb2312($keyword);
-        $moreurl = "http://news.sogou.com/news?query=" . $keyword."&page=".$pageNo;
+        $keyword = UTF8_to_gb2312($keyword);
+        $moreurl = "http://news.sogou.com/news?query=" . $keyword . "&page=" . $startPageNo;
 
         $html = file_get_html($moreurl);
         foreach ($html->find('div[class=rb]') as $e) {
-            $a =$e->find('a',0);
-            $url = $a->href.' ';
-            $title = $this->gb2312_toUTF8($a->innertext);
-            $this->snatchToDb($utf8KeyWord,$title,$url);
+            $a = $e->find('a', 0);
+            $url = $a->href . ' ';
+            $title = gb2312_to_UTF8($a->innertext);
+            $this->snatchToDb($utf8KeyWord, $title, $url);
         }
         $nextPage = $html->find('a[id=sogou_next]');
-        if($nextPage){
-            $this->snatchMoreNews($utf8KeyWord,$pageNo + 1);
+        if ($nextPage) {
+            $this->snatchMoreNews($utf8KeyWord, $startPageNo + 1);
         }
+    }
 
-    }
-    function getPublicSentimentJsonLastMonth($keywordUtf8){
-        $yesterday = date("Y-m-d 00:00:00",strtotime("-1 day"));
-        $lastMonth = date("Y-m-d 00:00:00",strtotime("last month"));
-        return $this->getPublicSentimentJsonByPeriod($keywordUtf8,$lastMonth,$yesterday);
-    }
-    function getPublicSentimentJsonByPeriod($keyword,$startDate,$endDate)
+    private function snatchToDb($keyword, $title, $url)
     {
-        $keyword = $this->UTF8_to_gb2312($keyword);
+        $db = Mod::app()->db;
+        $querySql = 'select id from snatch_data where keyword=? and url=?';
+        $count = $db->createCommand($querySql)->query(array($keyword, $url))->count();
+        if ($count > 0) {
+            return;
+        }
+        $sql = 'insert into snatch_data(keyword,tilte,url,ts) values (?,?,?,?)';
+        $db->createCommand($sql)->execute(array($keyword, $title, $url, date('Y-m-d H:i:s', time())));
+    }
+
+    public function getPublicSentimentJsonLastMonth($keywordUtf8)
+    {
+        $yesterday = date("Y-m-d 00:00:00", strtotime("-1 day"));
+        $lastMonth = date("Y-m-d 00:00:00", strtotime("-31 day"));
+        return $this->getPublicSentimentJsonByPeriod($keywordUtf8, $lastMonth, $yesterday);
+    }
+
+    public function getPublicSentimentJsonByPeriod($keyword, $startDate, $endDate)
+    {
+        $keyword = UTF8_to_gb2312($keyword);
         $json = $this->getAllDataJson($keyword);
         $userIndexes = explode(',', $json['userIndexes']);
         $periods = explode('|', $json['period']);
@@ -64,18 +73,31 @@ class PublicSentimentSnatch
         $end = $periods[1];
         $dateIdx = $this->prDates($start, $end);
         echo $startDate . ' to ' . $endDate . '<br>';
-        $pointNews = $this->getPointNews($keyword, $startDate, $endDate, $userIndexes);
-        echo json_encode($pointNews) . '<br>';
-        foreach ($pointNews["relatednews"] as $currentnews) {
-        if ($currentnews) {
-            echo $currentnews['title'] . '-' . $currentnews['date'] . '<br>';
+        $pointNewJsonArray = $this->getPointNews($keyword, $startDate, $endDate, $userIndexes);
+        //echo json_encode($pointNewJsonArray) . '<br>';
+        $pointNewsArray = array();
+        foreach ($pointNewJsonArray["relatednews"] as $currentnews) {
+            if ($currentnews) {
+
+                $dateTime = $currentnews['date'];
+                $date_ymd = substr($dateTime,0,10);
+                $pointCount = $userIndexes[$dateIdx[$date_ymd]];
+                //echo substr($dateTime,0,10). '='.$pointCount.'<br>';
+                $currentnews['pointCount'] = $pointCount;
+                //echo json_encode($currentnews) . '<br>';
+                array_unshift($pointNewsArray,$currentnews);
+//                $pointNewsArray[$date_ymd] = $currentnews;
+                //echo $currentnews['title'] . '-' . $currentnews['date'] . '<br>';
+            }
         }
-    }
-        return $pointNews;
+        foreach ($pointNewsArray as $currentnews) {
+            echo json_encode($currentnews) . '<br>';
+        }
+        return $pointNewsArray;
 
     }
 
-    function prDates($start, $end)
+    private function prDates($start, $end)
     {
         $dt_start = strtotime($start);
         $dt_end = strtotime($end);
@@ -89,15 +111,15 @@ class PublicSentimentSnatch
         return $result;
     }
 
-    function getPointNews($keyword, $startDate,
+    private  function getPointNews($keyword, $startDate,
                           $endDate, $userIndexes)
     {
-       // echo strtotime($startDate);
+        // echo strtotime($startDate);
         $pointtime = $this->getTopTen($userIndexes, strtotime($startDate),
             strtotime($endDate), strtotime($endDate) * 1000);
         $domain = "trend/idx_news.jsp";
         $param = "nosplit=1&ie=utf8&from=newsajaj&type=query&qnewstype=point&query="
-            . urlencode($this->gb2312_toUTF8($keyword)) . "&newstype=-1&trend=-1&mode=2"
+            . urlencode(gb2312_to_UTF8($keyword)) . "&newstype=-1&trend=-1&mode=2"
             . "&fdate="
             . strtotime($startDate)
             . "&pointtime="
@@ -110,7 +132,7 @@ class PublicSentimentSnatch
         return $newsJson;
     }
 
-    function getTopTen($data_arr, $stime, $etime, $endtime)
+    private function getTopTen($data_arr, $stime, $etime, $endtime)
     {
 
         $behind_days = 0;
@@ -161,7 +183,7 @@ class PublicSentimentSnatch
         return $pointsst;
     }
 
-    function getJson($url)
+    private function getJson($url)
     {
 
         //$postdata = http_build_query($post_data);
@@ -175,7 +197,7 @@ class PublicSentimentSnatch
         );
         $context = stream_context_create($options);
         $result = file_get_contents($url, false, $context);
-        $result = $this->gb2312_toUTF8($result);
+        $result = gb2312_to_UTF8($result);
         $end = strpos($result, ';');
         $result = substr($result, 0, $end);
         $json = json_decode($result, true);
@@ -183,14 +205,14 @@ class PublicSentimentSnatch
         return $json;
     }
 
-    function getAllDataJson($keyword)
+    private function getAllDataJson($keyword)
     {
         $url = YQ_URL . "sidx?type=0&query=" . $keyword . "&newstype=-1";
 
         $html = file_get_html($url);
         $script_text = "";
         foreach ($html->find('script') as $e) {
-            $current_script = $this->gb2312_toUTF8($e->innertext);
+            $current_script = gb2312_to_UTF8($e->innertext);
             //echo $script_text;
             if (strpos($current_script, "var tmp") > -1) {
                 $script_text = $current_script;
@@ -211,20 +233,6 @@ class PublicSentimentSnatch
         return "";
     }
 
-    /**
-     * @param $keyword
-     * @return string
-     */
-    public function UTF8_to_gb2312($keyword)
-    {
-        $keyword = mb_convert_encoding($keyword, "gb2312", "UTF-8");
-        return $keyword;
-    }
 
-    public function gb2312_toUTF8($keyword)
-    {
-        $keyword = mb_convert_encoding($keyword, "UTF-8", "gb2312");
-        return $keyword;
-    }
 
 } 
