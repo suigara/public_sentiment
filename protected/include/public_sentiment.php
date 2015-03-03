@@ -86,9 +86,7 @@ class PublicSentiment
                 array_unshift($pointNewsArray, $currentnews);
             }
         }
-        foreach ($pointNewsArray as $currentnews) {
-            echo json_encode($currentnews) . '<br>';
-        }
+
         return $pointNewsArray;
 
     }

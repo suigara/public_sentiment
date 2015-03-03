@@ -12,8 +12,11 @@ Mod::createWebApplication($env->getConfig());//->run();
 
 //echo "nihao";
 include ("/protected/include/public_sentiment.php");
-$su = new PublicSentiment();
-$str = $su->getPublicSentimentJsonLastMonth("陈赫");
+$ps = new PublicSentiment();
+$pointNewsArray = $ps->getPublicSentimentJsonLastMonth("陈赫");
+foreach ($pointNewsArray as $currentnews) {
+    echo json_encode($currentnews) . '<br>';
+}
 //$su->snatchMoreNews("陈赫");
 
 
